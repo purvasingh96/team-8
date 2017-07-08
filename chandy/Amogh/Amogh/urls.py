@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^find/', uploader_instance.index),
     url(r'^login/', uploader_instance.return_login),
     url(r'^login-validate/', uploader_instance.validate_auth),
+    url(r'^logout/', uploader_instance.logout),
+
 ]
 
 

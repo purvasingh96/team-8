@@ -109,10 +109,6 @@ class Uploader():
 
     def validate_auth(self,request):
         context = {}
-        if not request.POST.has_key('user_name') or not request.POST.has_key('password'):
-            context['messages'] = "Invalid parameters"
-            template = loader.get_template('db/loginpage.html')
-            return HttpResponse(template.render(context, request))
         login_param = self.auth(request)
         if login_param == self.auth(request) == 'success':
             template = loader.get_template('db/loginpage.html')
@@ -124,6 +120,22 @@ class Uploader():
             return HttpResponse(template.render(context, request))
 
     def return_login(self,request):
-        context = {}
+        context = {'messages': " "}
         template = loader.get_template('db/loginpage.html')
         return HttpResponse(template.render(context, request))
+
+    def logout(self,request):
+        try:
+            request.session['logged_in'] = False
+            del request.session['uid']
+        except Exception as e:
+            context = {'messages': "Already Logged out"}
+            template = loader.get_template('db/loginpage.html')
+            return HttpResponse(template.render(context, request))
+
+        context = {'messages': "Successfully logged out!"}
+        template = loader.get_template('db/loginpage.html')
+        return HttpResponse(template.render(context, request))
+
+
+
