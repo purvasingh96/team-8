@@ -62,7 +62,7 @@ class Uploader():
             return False
 
     def index(self,request):
-        if not auth(self,request):
+        if not self.auth(request):
             template = loader.get_template('db/login.html')
             return HttpResponse(template.render(context, request))
 
@@ -107,7 +107,13 @@ class Uploader():
     def validate_auth(self,request):
         context = {}
         if not request.POST.has_key('user_name') or not request.POST.has_key('password'):
-            context['valid'] = False
             context['messages'] = "Invalid parameters"
+            template = loader.get_template('db/login.html')
+            return HttpResponse(template.render(context, request))
+        if self.auth(request):
+            template = loader.get_template('db/login.html')
+            return HttpResponse(template.render(context, request))
+        else:
+            context['messages'] = "Username password is incorrect"
             template = loader.get_template('db/login.html')
             return HttpResponse(template.render(context, request))
