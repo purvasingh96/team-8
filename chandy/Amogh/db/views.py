@@ -7,9 +7,12 @@ from django.http import HttpResponse
 
 from django.template import loader
 
+from c
+
 class Uploader():
     def index(self,request):
-        template = loader.get_template('db/blah.html')
+        template = loader.get_template('db/upload.html')
+        print request.POST['datafile']
         context = {
             "logged_in": "loged in",
         }
