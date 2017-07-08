@@ -118,8 +118,8 @@ function show_text_gif(){
 
 
 function show()
-{   
-     var boxName="textBox"+count; 
+{
+     var boxName="textBox"+count;
      document.getElementById('mylist').innerHTML+='<br/><label><span>'+input_name[count]+': </span><input type="'+input_type[count]+'" id="'+boxName+'" value = "Sample"'+input_type[count]+' onfocus = "show();"/><span></span><img src = "img/tick.png" style = "display:none;"><img src = "img/'+input_explain[count]+'" alt = "" width="228" height="228"><br/>';
      count += 1;
 }
