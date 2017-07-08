@@ -9,6 +9,8 @@ from django.template import loader
 
 import random
 
+from models import CreateUser
+
 difficulty = [[]]
 difficulty[0] = ['.DS_Store',
  '404.php',
@@ -49,24 +51,25 @@ class Uploader():
     def auth(self, request):
         if request.session.has_key('logged_in'):
             if request.session['logged_in']:
-                return True
-        if request.POST.has_key("username") and request.POST.has_key("password"):
-            user_name = request.POST['username']
+                return "Successfully logged in!"
+        if request.POST.has_key("user_name") and request.POST.has_key("password"):
+            user_name = request.POST['user_name']
             password = request.POST['password']
-            user = CreateUser.objects.all().filter(email=user_name)
+            user = CreateUser.objects.all().filter(username=user_name)
             if user[0].password == password:
                 request.session['logged_in'] = True
                 request.session['uid'] = user[0].pk
-                return True
+                return "success"
+            else:
+                "Incorrect Username password combination"
         else:
-            return False
+            return "Incorrect params"
 
     def index(self,request):
         if not self.auth(request):
-            template = loader.get_template('db/login.html')
+            template = loader.get_template('db/loginpage.html')
+            context = {}
             return HttpResponse(template.render(context, request))
-
-
         template = loader.get_template('db/upload.html')
         context = {
             "logged_in": "loged in",
@@ -108,12 +111,19 @@ class Uploader():
         context = {}
         if not request.POST.has_key('user_name') or not request.POST.has_key('password'):
             context['messages'] = "Invalid parameters"
-            template = loader.get_template('db/login.html')
+            template = loader.get_template('db/loginpage.html')
             return HttpResponse(template.render(context, request))
-        if self.auth(request):
-            template = loader.get_template('db/login.html')
+        login_param = self.auth(request)
+        if login_param == self.auth(request) == 'success':
+            template = loader.get_template('db/loginpage.html')
+            context['messages'] = "Successfully Logged in!"
             return HttpResponse(template.render(context, request))
         else:
-            context['messages'] = "Username password is incorrect"
-            template = loader.get_template('db/login.html')
+            context['messages'] = login_param
+            template = loader.get_template('db/loginpage.html')
             return HttpResponse(template.render(context, request))
+
+    def return_login(self,request):
+        context = {}
+        template = loader.get_template('db/loginpage.html')
+        return HttpResponse(template.render(context, request))

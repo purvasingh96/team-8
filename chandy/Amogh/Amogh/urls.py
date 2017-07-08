@@ -26,6 +26,8 @@ uploader_instance = Uploader()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^find/', uploader_instance.index),
+    url(r'^login/', uploader_instance.return_login),
+    url(r'^login-validate/', uploader_instance.validate_auth),
 ]
 
 
