@@ -1,18 +1,22 @@
 import requests
 from bs4 import BeautifulSoup
-r = requests.get('http://www.incometaxindia.gov.in/Pages/default.aspx')
-
-r.text
+r = requests.get('https://docs.google.com/forms/d/e/1FAIpQLSdwDrwgqZ1N6uFiMf1kxg3RcmhrSZ8mzQ8JPyYVlkL4xM8wyw/viewform')
 
 soup = BeautifulSoup(r.text, 'html.parser')
 form = soup.find_all('form')
-type(form)
+for i in form:
+    print i.find_all('input')
+    print i.find_all('select')
+
+for i in form:
+    print i
 
 inputs = form.find_all('input')
+inputs = form.find_all('select')
 for i in inputs:
     if i['type'] != 'hidden':
-        print i['aria-label']
-        inputs[inputs.index(i)]['name'] = 'blah'
+        print i['aria-label'],i
+
 print [(element['name'], element['value']) for element in form.find_all('input')]
 
 import glob
