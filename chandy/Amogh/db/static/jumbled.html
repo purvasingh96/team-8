@@ -48,7 +48,7 @@
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
-   
+
 }
 .form-style-5 input[type="text"]:focus,
 .form-style-5 input[type="date"]:focus,
@@ -101,49 +101,160 @@
 {
     background: #109177;
 }
+.effect7
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect7:before, .effect7:after
+{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect7:after
+{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+.effect1{
+  -webkit-box-shadow: 0px 0px 114px -27px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 114px -27px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 114px -27px rgba(0,0,0,0.75);
+}
+
 </style>
-</style>
 
+<head>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>Freelancer - Start Bootstrap Theme</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Theme CSS -->
+    <link href="/static/css/freelancer.min.css" rel="stylesheet">
 
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-<div class="form-style-5">
-<form>
-<fieldset>
-<legend><span class="number">1</span> Jumbled Exercises</legend>
-<label>Name: </label><input type="text" name="field1" placeholder="Your Name *">
-<label>Father's Name: </label><input type="text" name="field2" placeholder="Your Father's Name *">
-<label>Gender: </label><input type="radio" name="gender" id="male">Male</input>
-<input type="radio" name="gender" id="female">Female</input>
-<label>Date Of Birth: </label><input type="text" name="dob" class="datepicker">
-<!-- <label for="job">Interests:</label>
-<select id="job" name="field4">
-<optgroup label="Indoors">
-  <option value="fishkeeping">Fishkeeping</option>
-  <option value="reading">Reading</option>
-  <option value="boxing">Boxing</option>
-  <option value="debate">Debate</option>
-  <option value="gaming">Gaming</option>
-  <option value="snooker">Snooker</option>
-  <option value="other_indoor">Other</option>
-</optgroup>
-<optgroup label="Outdoors">
-  <option value="football">Football</option>
-  <option value="swimming">Swimming</option>
-  <option value="fishing">Fishing</option>
-  <option value="climbing">Climbing</option>
-  <option value="cycling">Cycling</option>
-  <option value="other_outdoor">Other</option>
-</optgroup>
-</select>      
-</fieldset>
-<fieldset>
-<legend><span class="number">2</span> Additional Info</legend>
-<textarea name="field3" placeholder="About Your School"></textarea>
-</fieldset> -->
-<input type="submit" value="Submit" />
-</form>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<!-- Navigation -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header page-scroll">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                  </button>
+                  <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="hidden">
+                          <a href="#page-top"></a>
+                      </li>
+                      <li class="page-scroll">
+                          <a href="#portfolio">Portfolio</a>
+                      </li>
+                      <li class="page-scroll">
+                          <a href="#about">About</a>
+                      </li>
+                      <li class="page-scroll">
+                          <a href="#contact">Contact</a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+      </nav>
+
+    </div>
+  </div>
 </div>
+
+<body id="page-top" class="index">
+
+<div class="container-fluid" style="margin-top: 200px; border-radius:10px;">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 effect1" style="padding-top:2%; padding-bottom:2%; padding-left:10%; padding-right:10%;">
+      <div class="form-style-5">
+      <form>
+      <fieldset>
+      <legend><span class="number">1</span> Jumbled Exercises</legend>
+      <label>Name: </label><input type="text" name="field1" placeholder="Your Name *">
+      <label>Father's Name: </label><input type="text" name="field2" placeholder="Your Father's Name *">
+      <label>Gender: </label><input type="radio" name="gender" id="male">Male</input>
+      <input type="radio" name="gender" id="female">Female</input>
+      <label>Date Of Birth: </label><input type="text" name="dob" class="datepicker">
+      <!-- <label for="job">Interests:</label>
+      <select id="job" name="field4">
+      <optgroup label="Indoors">
+        <option value="fishkeeping">Fishkeeping</option>
+        <option value="reading">Reading</option>
+        <option value="boxing">Boxing</option>
+        <option value="debate">Debate</option>
+        <option value="gaming">Gaming</option>
+        <option value="snooker">Snooker</option>
+        <option value="other_indoor">Other</option>
+      </optgroup>
+      <optgroup label="Outdoors">
+        <option value="football">Football</option>
+        <option value="swimming">Swimming</option>
+        <option value="fishing">Fishing</option>
+        <option value="climbing">Climbing</option>
+        <option value="cycling">Cycling</option>
+        <option value="other_outdoor">Other</option>
+      </optgroup>
+      </select>
+      </fieldset>
+      <fieldset>
+      <legend><span class="number">2</span> Additional Info</legend>
+      <textarea name="field3" placeholder="About Your School"></textarea>
+      </fieldset> -->
+      <input type="submit" value="Submit" />
+      </form>
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
+</body>
