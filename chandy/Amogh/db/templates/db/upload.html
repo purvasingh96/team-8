@@ -83,7 +83,7 @@
                       <input type="hidden" name="difficulty" value={{ difficulty }}>
                       <input type="hidden" name="file_name" value={{ file_name }}>
                         <p>
-                          Select the file <b>file1.txt<b>:<br>
+                          Select the file <b>{{ file_name }}<b>:<br>
                         </p>
                         <p>
                           Please select the mentioned file:<br>
@@ -92,7 +92,7 @@
 
                         <div>
                           <input type="submit" value="Send">
-                          <p align="right"> <img src="/static/img/smile.png" ><br>Congracts you selected the correct file</p>
+                          {% if correct %}<p align="right"> <img src="/static/img/smile.png" ><br>Congracts you selected the correct file</p>{% endif %}
 
                         </div>
                     </form>
