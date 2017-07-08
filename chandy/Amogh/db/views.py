@@ -160,7 +160,7 @@ class RestfulEndpoints():
                 pk = request.session['uid']
                 obj = CreateUser.objects.all().filter(pk=pk)
                 points = Points.objects.all().filter(user=obj)
-
+                points[0]
 
 
             return HttpResponse(json.dumps({"Status": "falied", "message": "no-auth"}))
