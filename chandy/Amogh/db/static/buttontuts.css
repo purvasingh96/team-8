@@ -1,0 +1,44 @@
+.buttont{
+	background-color: #559ce8;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	float:left;
+	border-radius:5px;
+}
+
+
+input[type="radio"]{
+	width:30px;
+	height:30px;
+	border: 5px
+	border-color:#FFFFFF;
+	font-size:16px;
+}
+
+.hint{
+	color:green;
+	float:left;
+	padding:0 0 0 15px;
+}
+.form{
+	
+}
+
+.sidebyside{
+	float:left;
+	margin: 0px 500px ;
+}
+
+.images{
+	float:left;
+}
+
+.images1{
+	float:left;
+}
+
