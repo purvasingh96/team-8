@@ -92,7 +92,9 @@
 
                         <div>
                           <input type="submit" value="Send">
-                          {% if correct %}<p align="right"> <img src="/static/img/smile.png" ><br>Congracts you selected the correct file</p>{% endif %}
+                          {% if correct == "True" %}<p align="right"> <img width="200" src="/static/img/smile.png" ><br>Congracts you selected the correct file</p>{% endif %}
+                          {% if correct == "False" %}<p align="right"> <img width="200" src="/static/img/tearysmiley.jpg" ><br>Sorry wrong file :( </p>{% endif %}
+
 
                         </div>
                     </form>

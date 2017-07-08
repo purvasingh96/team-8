@@ -45,7 +45,26 @@ difficulty[0] = ['.DS_Store',
  'wpml-config.xml']
 
 class Uploader():
+
+    def auth(self, request):
+        if request.session.has_key('logged_in'):
+            if request.session['logged_in']:
+                return True
+        if request.POST.has_key("username") and request.POST.has_key("password"):
+            user_name = request.POST['username']
+            password = request.POST['password']
+            user = CreateUser.objects.all().filter(email=user_name)
+            if user[0].password == password:
+                request.session['logged_in'] = True
+                request.session['uid'] = user[0].pk
+                return True
+        else:
+            return False
+
     def index(self,request):
+        if not auth(self,request):
+            template = loader.get_template('db/login.html')
+            return HttpResponse(template.render(context, request))
 
 
         template = loader.get_template('db/upload.html')
@@ -79,8 +98,16 @@ class Uploader():
 
         # check the correctness of the upload
         if request.GET['datafile'] == request.GET['file_name']:
-            context['correct'] = True
+            context['correct'] = "True"
         else:
-            context['correct'] = False
+            context['correct'] = "False"
 
         return HttpResponse(template.render(context, request))
+
+    def validate_auth(self,request):
+        context = {}
+        if not request.POST.has_key('user_name') or not request.POST.has_key('password'):
+            context['valid'] = False
+            context['messages'] = "Invalid parameters"
+            template = loader.get_template('db/login.html')
+            return HttpResponse(template.render(context, request))
