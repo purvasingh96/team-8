@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tmp file</title>
+</head>
+<script type="text/javascript">
+var parent = document.getElementById('act');
+function show(){
+    var x = document.getElementById('image');
+    var y = document.getElementById('image1');
+    var read = document.getElementById('name').value;
+    if(read == null){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else if(read != 'akash'){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else {
+    	y.style.display = 'none';
+    	x.style.display = 'block';
+    }
+}
+
+function father_show()
+{
+	var x = document.getElementById('image2');
+    var y = document.getElementById('image3');
+    var read = document.getElementById('fname').value;
+    if(read == null){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else if(read != 'chandra'){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else {
+    	y.style.display = 'none';
+    	x.style.display = 'block';
+    }
+}
+</script>
+<body id = "act">
+	Name: <input type="text" id="name" name = "name" onkeyup="show();"><img src = "img/tick.png" alt = "" id = "image" style="display: none;"><img src = "img/cross.png" alt = "" id = "image1" style="display: none;">
+	Father's Name: <input type="text" id="fname" name = "fname" onkeyup="father_show();"><img src = "img/tick.png" alt = "" id = "image2" style="display: none;"><img src = "img/cross.png" alt = "" id = "image3" style="display: none;">
+</body>
+</html>
