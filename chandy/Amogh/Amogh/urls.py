@@ -22,6 +22,7 @@ from django.conf import settings
 from django.views.static import serve
 
 uploader_instance = Uploader()
+restful_instance = RestfulEndpoints()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,7 +30,7 @@ urlpatterns = [
     url(r'^login/', uploader_instance.return_login),
     url(r'^login-validate/', uploader_instance.validate_auth),
     url(r'^logout/', uploader_instance.logout),
-
+    url(r'^api/inc/', restful_instance.inc_points),
 ]
 
 
