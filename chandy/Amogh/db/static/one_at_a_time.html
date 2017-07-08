@@ -31,6 +31,10 @@
 
 
 
+
+
+
+
 <body id="page-top" class="index">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
@@ -69,21 +73,6 @@
 
 
 
-<!-- Header -->
-    <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <h1 class="name">Form Training </h1>
-                        <hr class="star-light">
-                        <span class="skills">Text Field - Button - Radio Button <br>(Setup for trainers)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
 
 
@@ -104,6 +93,7 @@
 
 
 <script type="text/javascript">
+
 var input_type = ['text','button','radio'];
 var input_name = ["Father's Name","ClickMe","Select One"];
 var input_explain = ['text.gif','button.gif','radio.gif'];
@@ -118,8 +108,8 @@ function show_text_gif(){
 
 
 function show()
-{
-     var boxName="textBox"+count;
+{   
+     var boxName="textBox"+count; 
      document.getElementById('mylist').innerHTML+='<br/><label><span>'+input_name[count]+': </span><input type="'+input_type[count]+'" id="'+boxName+'" value = "Sample"'+input_type[count]+' onfocus = "show();"/><span></span><img src = "img/tick.png" style = "display:none;"><img src = "img/'+input_explain[count]+'" alt = "" width="228" height="228"><br/>';
      count += 1;
 }
@@ -133,6 +123,7 @@ function show()
 
 
 <div class = "mylist" id = "mylist">
+<h2 style="margin:120px 0 0 0;"></h2>
     <label><span>Name : </span><input type="text" id="read" onkeyup="show();" /><img src = "img/text.gif" alt = "" width="228" height="228"><br/>
 </div>
 
