@@ -15,6 +15,12 @@ Column 4 : Course-Level (int)
 
 Course 
 1) Basic Button and Text Familiarisation
+	1.1)Standard Form
+	1.2)Button Demo
+	1.3)Radio Button Demo
+	1.4)DatePicker Demo
+	1.5)CheckBoxes Demo
+	1.6)Scroll Bar Demo
 2) Form Data Entry
 	2.1) One At A Time
 	2.2) Jumbler Excercise
