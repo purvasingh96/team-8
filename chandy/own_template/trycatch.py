@@ -12,3 +12,33 @@ for i in inputs:
         print i['aria-label']
         inputs[inputs.index(i)]['name'] = 'blah'
 print [(element['name'], element['value']) for element in form.find_all('input')]
+
+
+
+class ParseWebsite():
+    def __init__(self,url):
+        self.html = requests.get(url)
+        soup = BeautifulSoup(self.html.text,'html.parser')
+        form = soup.find('form')
+        inputs = form.find_all('input')
+        self.all_inputs = []
+        for i in inputs:
+            form_element = {}
+            if i['type'] != 'hidden':
+                print i['aria-label']
+                form_element['name'] = i['aria-label']
+                form_element['type'] = i['type']
+                self.all_inputs.append(form_element)
+    def make_form(self):
+        string_generated = ""
+        string_generated += '<form method="get" action="dynamically_decided">'
+        for i in self.all_inputs:
+            string_generated += '<input name="ident' + i['name'] + '" type="' + i['type'] + '" placeholder="' + i['name'] + '">'
+        string_generated += "</form>"
+        return string_generated
+
+
+# Unit Tests
+
+p = ParseWebsite('https://docs.google.com/forms/d/e/1FAIpQLSdwDrwgqZ1N6uFiMf1kxg3RcmhrSZ8mzQ8JPyYVlkL4xM8wyw/viewform')
+p.make_form()
