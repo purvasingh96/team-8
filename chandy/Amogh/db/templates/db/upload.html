@@ -79,8 +79,9 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form action="/find/" enctype="multipart/form-data" method="post">
-                      {% csrf_token %}
+                    <form action="/find/" enctype="multipart/form-data" method="get">
+                      <input type="hidden" name="difficulty" value={{ difficulty }}>
+                      <input type="hidden" name="file_name" value={{ file_name }}>
                         <p>
                           Select the file <b>file1.txt<b>:<br>
                         </p>

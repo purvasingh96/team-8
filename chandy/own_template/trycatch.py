@@ -15,8 +15,12 @@ for i in inputs:
         inputs[inputs.index(i)]['name'] = 'blah'
 print [(element['name'], element['value']) for element in form.find_all('input')]
 
+import glob
 
-
+ha = os.listdir('/Users/admin/Desktop/Search___Go_[v1.8]')
+os.path
+cwd = os.getcwd()
+cwd
 class ParseWebsite():
     def __init__(self,url,google=True):
         self.html = requests.get(url)
