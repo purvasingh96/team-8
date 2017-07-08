@@ -5,11 +5,28 @@
 </head>
 <script type="text/javascript">
 
+var parent = document.getElementById('act');
+
 function show(){
-	 document.getElementById('act').innerHTML+='<img src = "img/tick.png" style = "display:none;"><img src = "img/tick.png" alt = "" width="228" height="228"><br/>';
+    var x = document.getElementById('image');
+    var y = document.getElementById('image1');
+    var read = document.getElementById('read').value;
+
+    if(read == null){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else if(read != 'akash'){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else {
+    	y.style.display = 'none';
+    	x.style.display = 'block';
+    }
 }
 </script>
 <body id = "act">
-	<input type="text" id="read" name = "read" onkeyup="show();">
+	<input type="text" id="read" name = "read" onkeyup="show();"><img src = "img/tick.png" alt = "" id = "image" style="display: none;"><img src = "img/wrong.png" alt = "" id = "image1" style="display: none;">
 </body>
 </html>
