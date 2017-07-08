@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Training : One at a time</title>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <title>Amoghtrust</title>
+
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,31 +20,22 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
+
+<link rel="stylesheet" type="text/css" href="buttontuts.css">
 </head>
-
-
-
-
-
-
-<body id="page-top" class="index">
+<body style:"#e5e0e0;">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Form Training</a>
+                <a class="navbar-brand" href="#page-top">Amogh Trust</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,86 +61,28 @@
     </nav>
 
 
+<div class="container">
+<h2 style="margin:110px 0 0 0;padding-bottom:10px;">Radio Button Tutorial</h2>
+<div class="form">
 
-<!-- Header -->
-    <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <h1 class="name">Form Training </h1>
-                        <hr class="star-light">
-                        <span class="skills">Text Field - Button - Radio Button <br>(Setup for trainers)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<form  action="">
+  <input type="radio" name="gender" value="male"><h3>Radio button</h3></input><br>
+  <input type="radio" name="gender" value="female"><h3>Radio button</h3></input><br>
+  <input type="radio" name="gender" value="other"><h3>Radio button</h3></input>
+</form>
 
+<p align="left"><h3>These are the radio buttons</h3></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-var input_type = ['text','button','radio'];
-var input_name = ["Father's Name","ClickMe","Select One"];
-var input_explain = ['text.gif','button.gif','radio.gif'];
-var count = 1;
-var boxName = 0;
-
-function show_text_gif(){
-    document.getElementById('mylist').innerHTML+='<br/><label><span>'+input_name[0]+': </span><input type="'+input_type[0]+'" id="'+boxName+'"/><span></span><img src = "img/tick.png" style = "display:none;"><img src = "img/'+input_explain[0]+'" alt = "" width="228" height="228"><br/>';
-
-
-}
-
-
-function show()
-{   
-     var boxName="textBox"+count; 
-     document.getElementById('mylist').innerHTML+='<br/><label><span>'+input_name[count]+': </span><input type="'+input_type[count]+'" id="'+boxName+'" value = "Sample"'+input_type[count]+' onfocus = "show();"/><span></span><img src = "img/tick.png" style = "display:none;"><img src = "img/'+input_explain[count]+'" alt = "" width="228" height="228"><br/>';
-     count += 1;
-}
-</script>
-
-
-
-
-
-
-
-
-<div class = "mylist" id = "mylist">
-    <label><span>Name : </span><input type="text" id="read" onkeyup="show();" /><img src = "img/text.gif" alt = "" width="228" height="228"><br/>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
+	</br><h2 style="padding-top:50px">Steps to use Radio Button</h2>
+	<img src="radiobutton.gif"></img>
+	</div>
+	
+	
+</div>
 
 <!-- Footer -->
     <footer class="text-center">
@@ -157,7 +92,7 @@ function show()
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
                         <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                            <br>Beverly Hills,</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -190,7 +125,7 @@ function show()
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        Copyright &copy; Amogh trust 2016
                     </div>
                 </div>
             </div>
@@ -443,15 +378,6 @@ function show()
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
-
-</body>
-
-</html>
-
-
-
-
-
 
 </body>
 </html>
