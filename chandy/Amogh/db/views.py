@@ -13,41 +13,41 @@ from models import CreateUser
 
 difficulty = [[]]
 difficulty[0] = ['.DS_Store',
- '404.php',
- 'advanced-search-without-map.php',
- 'archive-listing-item.php',
- 'archive.php',
- 'blog-masonry-full-width.php',
- 'blog-masonry.php',
- 'blog-standard-whole-post.php',
- 'blog-standard.php',
- 'changes.txt',
- 'comments.php',
- 'footer.php',
- 'full-width.php',
- 'functions.php',
- 'header.php',
- 'index.php',
- 'landing-page.php',
- 'page.php',
- 'product-searchform.php',
- 'screenshot.png',
- 'search-and-go.zip',
- 'search.php',
- 'searchform.php',
- 'sidebar.php',
- 'single-listing-item.php',
- 'single-portfolio-item.php',
- 'single.php',
- 'slider.php',
- 'style.css',
- 'theme-includes.php',
- 'title.php',
- 'woocommerce.php',
- 'wpml-config.xml']
+                 '404.php',
+                 'advanced-search-without-map.php',
+                 'archive-listing-item.php',
+                 'archive.php',
+                 'blog-masonry-full-width.php',
+                 'blog-masonry.php',
+                 'blog-standard-whole-post.php',
+                 'blog-standard.php',
+                 'changes.txt',
+                 'comments.php',
+                 'footer.php',
+                 'full-width.php',
+                 'functions.php',
+                 'header.php',
+                 'index.php',
+                 'landing-page.php',
+                 'page.php',
+                 'product-searchform.php',
+                 'screenshot.png',
+                 'search-and-go.zip',
+                 'search.php',
+                 'searchform.php',
+                 'sidebar.php',
+                 'single-listing-item.php',
+                 'single-portfolio-item.php',
+                 'single.php',
+                 'slider.php',
+                 'style.css',
+                 'theme-includes.php',
+                 'title.php',
+                 'woocommerce.php',
+                 'wpml-config.xml']
+
 
 class Uploader():
-
     def auth(self, request):
         if request.session.has_key('logged_in'):
             if request.session['logged_in']:
@@ -65,7 +65,7 @@ class Uploader():
         else:
             return "Incorrect params"
 
-    def index(self,request):
+    def index(self, request):
         if not self.auth(request):
             template = loader.get_template('db/loginpage.html')
             context = {}
@@ -76,13 +76,11 @@ class Uploader():
 
         }
 
-
         # check if dicciculty exisits or add difficulty
         if request.GET.has_key('difficulty'):
             context['difficulty'] = request.GET['difficulty']
         else:
             context['difficulty'] = '0'
-
 
         # add file into context
         if context['difficulty'] == '0':
@@ -90,14 +88,11 @@ class Uploader():
         else:
             context['file_name'] = random.choice(difficulty[0])
 
-
         # check if file has been uploaded else return fresh
         try:
             print "request.GET['datafile'] : ", request.GET['datafile']
         except Exception as e:
             return HttpResponse(template.render(context, request))
-
-
 
         # check the correctness of the upload
         if request.GET['datafile'] == request.GET['file_name']:
@@ -107,24 +102,25 @@ class Uploader():
 
         return HttpResponse(template.render(context, request))
 
-    def validate_auth(self,request):
+    def validate_auth(self, request):
         context = {}
         login_param = self.auth(request)
-        if login_param == self.auth(request) == 'success':
-            template = loader.get_template('db/loginpage.html')
+        if login_param == 'success':
+            template = loader.get_template('db/dashboard.html')
             context['messages'] = "Successfully Logged in!"
             return HttpResponse(template.render(context, request))
+
         else:
             context['messages'] = login_param
             template = loader.get_template('db/loginpage.html')
             return HttpResponse(template.render(context, request))
 
-    def return_login(self,request):
+    def return_login(self, request):
         context = {'messages': " "}
         template = loader.get_template('db/loginpage.html')
         return HttpResponse(template.render(context, request))
 
-    def logout(self,request):
+    def logout(self, request):
         try:
             request.session['logged_in'] = False
             del request.session['uid']
@@ -136,6 +132,3 @@ class Uploader():
         context = {'messages': "Successfully logged out!"}
         template = loader.get_template('db/loginpage.html')
         return HttpResponse(template.render(context, request))
-
-
-
