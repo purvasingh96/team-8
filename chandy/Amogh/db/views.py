@@ -9,7 +9,9 @@ from django.template import loader
 
 import random
 
-from models import CreateUser
+from models import CreateUser, Points
+
+import json
 
 difficulty = [[]]
 difficulty[0] = ['.DS_Store',
@@ -132,3 +134,37 @@ class Uploader():
         context = {'messages': "Successfully logged out!"}
         template = loader.get_template('db/loginpage.html')
         return HttpResponse(template.render(context, request))
+
+
+class RestfulEndpoints():
+    def auth(self, request):
+        if request.session.has_key('logged_in'):
+            if request.session['logged_in']:
+                return "Already Signed in"
+        if request.POST.has_key("user_name") and request.POST.has_key("password"):
+            user_name = request.POST['user_name']
+            password = request.POST['password']
+            user = CreateUser.objects.all().filter(username=user_name)
+            if user[0].password == password:
+                request.session['logged_in'] = True
+                request.session['uid'] = user[0].pk
+                return "success"
+            else:
+                "Incorrect Username password combination"
+        else:
+            return "Incorrect params"
+
+    def inc_points(self,request):
+        if self.auth(request) == "Already Signed in":
+            try:
+                pk = request.session['uid']
+                obj = CreateUser.objects.all().filter(pk=pk)
+                points = Points.objects.all().filter(user=obj)
+
+
+
+            return HttpResponse(json.dumps({"Status": "falied", "message": "no-auth"}))
+
+        else:
+            return HttpResponse(json.dumps({"Status":"falied", "message":"no-auth"}))
+            # don't do it
