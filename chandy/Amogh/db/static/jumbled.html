@@ -51,14 +51,33 @@ function gender_show()
     console.log(male);
     //var female = document.getElementById('female').checked;
     if(male){
-      alert("male");
+      alert("Correct");
       x.style.display == 'block';
       y.style.display == 'none';
     }
     else{
-      alert("female");
+      alert("wrong");
       x.style.display == 'none';
       y.style.display == 'block';
+    }
+}
+
+function date_show()
+{
+  var x = document.getElementById('image6');
+    var y = document.getElementById('image7');
+    var read = document.getElementById('datepicker').value;
+    if(read == null){
+      y.style.display = 'block';
+      x.style.display = 'none';
+    }
+    else if(read != '07-07-1996'){
+      y.style.display = 'block';
+      x.style.display = 'none';
+    }
+    else {
+      y.style.display = 'none';
+      x.style.display = 'block';
     }
 }
 
@@ -225,18 +244,10 @@ img .image{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script>
-    $( document ).ready(function() {
-    console.log( "ready!" );
-     $( function() {
-      $( "#datepicker" ).datepicker();
-    } );
-});
    
-    </script>
   </head>
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Jumbled exercises</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -258,7 +269,6 @@ img .image{
     <![endif]-->
 
 
-  <title>tmp file</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 </head>
@@ -292,18 +302,19 @@ img .image{
       <form>
       <fieldset>
       
-<label>Gender: </label> <input type="radio" id="male" name = "gender" onkeyup="gender_show();">Male</input>
-  <img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
-    <input type="radio" id="female" name = "gender" onkeyup="gender_show();">Female</input><img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
-    <img src = "img/tick.png" alt = "" id = "image6" style="display: none;"><img src = "img/cross.png" alt = "" id = "image7" style="display: none;">
+<label>Gender: </label> <input type="radio" id="male" name = "gender" value="male" onclick="gender_show();">Male</input>
+    <input type="radio" id="female" name = "gender" onclick="gender_show();">Female</input>
+    <img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;"><br>
 
   <label>Father's Name: </label><input type="text" id="fname" name = "field2" onkeyup="father_show();"><img src = "img/tick.png" alt = "" id = "image2" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image3" style="display: none;" width="33" height="33">
-  <legend><span class="number">1</span> Full Exercises </legend>
+  <legend><span class="number">3</span> Jumbled Exercises </legend>
 
   <label>Name: </label> <input type="text" id="name" name = "field1" onkeyup="show();"><img src = "img/tick.png" alt = "" id = "image" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image1" style="display: none;" width="33" height="33">
 
-  <label>Date: </label><input type="text" id="datepicker">
+  <label>Date: </label><input type="text" id="datepicker" name = "field1" onkeyup="date_show();" placeholder="dd-mm-yyy"><img src = "img/tick.png" alt = "" id = "image6" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image7" style="display: none;" width="33" height="33">
   <input type="submit" name="submit"></input>
 
+
+</script>
 </body>
 </html>
