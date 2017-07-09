@@ -150,13 +150,13 @@
     <title>Freelancer - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+    <link href="/static/css/freelancer.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -214,56 +214,16 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10 effect1" style="padding-top:2%; padding-bottom:2%; padding-left:10%; padding-right:10%;">
+      {%if submitted %}
+      <h1>Successfully added</h1>
+      {% endif %}
 
 	<div class="form-style-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-							<form>
-			<fieldset>
-				<legend><span class="number">1</span> Text Fields</legend> <label>Name:</label> <input name="field1" placeholder="Your Name *" type="text"> <label>Father's Name:</label> <input name="field2" placeholder="Your Father's Name *" type="text">  <!-- <label for="job">Interests:</label>
-      <select id="job" name="field4">
-      <optgroup label="Indoors">
-        <option value="fishkeeping">Fishkeeping</option>
-        <option value="reading">Reading</option>
-        <option value="boxing">Boxing</option>
-        <option value="debate">Debate</option>
-        <option value="gaming">Gaming</option>
-        <option value="snooker">Snooker</option>
-        <option value="other_indoor">Other</option>
-      </optgroup>
-      <optgroup label="Outdoors">
-        <option value="football">Football</option>
-        <option value="swimming">Swimming</option>
-        <option value="fishing">Fishing</option>
-        <option value="climbing">Climbing</option>
-        <option value="cycling">Cycling</option>
-        <option value="other_outdoor">Other</option>
-      </optgroup>
-      </select>
-      </fieldset>
-      <fieldset>
-      <legend><span class="number">2</span> Additional Info</legend>
-      <textarea name="field3" placeholder="About Your School"></textarea>
-      </fieldset> -->
-				 <input type="submit" value="Submit">
-			</fieldset>
-		</form>
-				</div>
-				<div class="col-lg-4">
-					<img src="Hoshi.gif">
-				</div>
-			</div>
-		</div>
+      {{ form|safe }}
+      {% if generated %}
+      <a href="http://localhost:8080/form-submit/form_validate?form_id={{form_id}}"><h1> Your form is here with id:{{ form_id }}</h1></a>
+      {% endif %}
 	</div>
-  <div class="row">
-    <div class="col-lg-2">
-        Button 1
-    </div>
-    <div class="col-lg-8"></div>
-    <div class="col-lg-2">
-      Button 2
-    </div>
 
   </div>
     </div>

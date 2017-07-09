@@ -15,6 +15,8 @@ import json
 
 import pickle
 
+from makeform import MakeForm
+m = MakeForm()
 difficulty = [[]]
 difficulty[0] = ['.DS_Store',
                  '404.php',
@@ -138,14 +140,57 @@ class Uploader():
         return HttpResponse(template.render(context, request))
     def make_form(self,request):
         if request.GET.has_key('url'):
-            pass
+            form_rendered, form_id,ids_used = m.generate(request.GET['url'])
+            pickle.dump(ids_used,open('ids_used'+form_id,"wb"))
+            pickle.dump(form_rendered,open('form'+form_id,"wb"))
+            context = {'form': form_rendered,'form_id':form_id,'generated':True }
+            template = loader.get_template('db/standardform.html')
+            return HttpResponse(template.render(context, request))
         else:
-            return HttpResponse('lol')
+            return HttpResponse('error')
     def VALIDATE_form(self,request):
-        if request.GET.has_key('url'):
-            print 'get'
+        if request.GET.has_key('form_id'):
+            json_gen = {}
+            list_of_params = pickle.load(open('ids_used'+request.GET['form_id'],"rb"))
+            try:
+                for i in list_of_params:
+                    json_gen[i] = request.GET[i]
+            except Exception as e:
+                context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id':" " }
+                template = loader.get_template('db/standardform.html')
+                return HttpResponse(template.render(context, request))
+            try:
+                saved_json = pickle.load(open('form_data'+request.GET['form_id'],"rb"))
+                saved_json.append(json_gen)
+                list_of_params = pickle.dump(saved_json,open('form_data'+request.GET['form_id'],"wb"))
+            except Exception as e:
+                list_of_params = pickle.dump([json_gen],open('form_data'+request.GET['form_id'],"wb"))
+            context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id':" " ,"submitted":True}
+            template = loader.get_template('db/standardform.html')
+            return HttpResponse(template.render(context, request))
         else:
-            return HttpResponse('lol')
+            return HttpResponse('error')
+
+    def show_data(self,request):
+        if request.GET.has_key('form_id'):
+            saved_json = pickle.load(open('form_data'+request.GET['form_id'],"rb"))
+            params = pickle.load(open('ids_used'+request.GET['form_id'],"rb"))
+            context = {"saved_json":saved_json,'form_id':" " ,"submitted":True,"params":pickle.load(open('ids_used'+request.GET['form_id'],"rb"))}
+            form_content= ""
+            for j in saved_json:
+                form_content += "<tr>"
+                for i in params:
+                    form_content += "<td>"+ str(j[i]) + "</td>"
+                form_content += "</tr>"
+            context['table_content'] = form_content
+            template = loader.get_template('db/table.html')
+            return HttpResponse(template.render(context, request))
+        else:
+            return HttpResponse('error')
+
+
+
+
 
 class RestfulEndpoints():
     def auth(self, request):

@@ -55,14 +55,8 @@ class MakeForm():
                     rdno += 1
         form_generated +='<input type="submit">'
         form_generated +='</form>'
-        return form_generated,form_id
+        return form_generated,form_id,return_id_userd
 
-m = MakeForm()
-form_generated,form_id = m.generate('https://docs.google.com/forms/d/e/1FAIpQLSdwDrwgqZ1N6uFiMf1kxg3RcmhrSZ8mzQ8JPyYVlkL4xM8wyw/viewform')
-
-<form method="get" action="form_validate"><input type="text" placeholder="Short answer" name="text0" id ="Short answer"><select name="text0" ><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option>
-<option value="Option 3">Option 3</option>
-<option value="Option 4">Option 4</option>
-</select><input type="radio" name="text0" value="Option 1" checked> Option 1<br>
-<input type="submit">
-</form>
+# unit test
+# m = MakeForm()
+# form_generated,form_id = m.generate('https://docs.google.com/forms/d/e/1FAIpQLSdwDrwgqZ1N6uFiMf1kxg3RcmhrSZ8mzQ8JPyYVlkL4xM8wyw/viewform')

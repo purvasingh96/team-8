@@ -1,0 +1,53 @@
+(lp0
+(dp1
+S'listbox1'
+p2
+VOption 1
+p3
+sS'listbox0'
+p4
+VOption 1
+p5
+sS'text0'
+p6
+Vchan
+p7
+sS'radio0'
+p8
+Vone
+p9
+sa(dp10
+S'listbox1'
+p11
+VOption 3
+p12
+sS'listbox0'
+p13
+VOption 1
+p14
+sS'text0'
+p15
+Vchan
+p16
+sS'radio0'
+p17
+Vtwo
+p18
+sa(dp19
+S'listbox1'
+p20
+VOption 2
+p21
+sS'listbox0'
+p22
+VOption 1
+p23
+sS'text0'
+p24
+Vsfdg
+p25
+sS'radio0'
+p26
+Vtwo
+p27
+sa.

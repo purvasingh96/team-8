@@ -30,7 +30,11 @@ urlpatterns = [
     url(r'^login/', uploader_instance.return_login),
     url(r'^login-validate/', uploader_instance.validate_auth),
     url(r'^logout/', uploader_instance.logout),
+    url(r'^form-new/', uploader_instance.make_form),
+    url(r'^form-submit/', uploader_instance.VALIDATE_form),
+    url(r'^form-show/', uploader_instance.show_data),
     url(r'^api/inc/', restful_instance.inc_points),
+
 ]
 
 
