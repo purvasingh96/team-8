@@ -136,7 +136,16 @@ class Uploader():
         context = {'messages': "Successfully logged out!"}
         template = loader.get_template('db/loginpage.html')
         return HttpResponse(template.render(context, request))
-
+    def make_form(self,request):
+        if request.GET.has_key('url'):
+            pass
+        else:
+            return HttpResponse('lol')
+    def VALIDATE_form(self,request):
+        if request.GET.has_key('url'):
+            print 'get'
+        else:
+            return HttpResponse('lol')
 
 class RestfulEndpoints():
     def auth(self, request):

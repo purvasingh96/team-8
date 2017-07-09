@@ -20,6 +20,7 @@
   </select>
   <input type="text" placeholder="Answer this Questing" name="Answer this Questing"><select><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option><option value="Option 3">Option 3</option><option value="Option 4">Option 4</option></select><input type="radio" name="gender" value="Option 1" checked> Option 1<br> -->
 </form>
+<form method="get" action="form_validate"><input type="hidden" name="form_id" value="33735"><input type="text" placeholder="Short answer" name="text0" id ="short answer"><select name="listbox0" ><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option><option value="Option 3">Option 3</option><option value="Option 4">Option 4</option></select><input type="radio" name="radio0" value="Option 1" checked> Option 1<br><input type="submit"></form>
     <div align="center">
         <p>Click on The Button and Start Speaking (Allow Permission to access Microphone)</p>
         <textarea rows="30" cols="100" id="output"></textarea>
@@ -69,6 +70,19 @@
   			document.getElementById("output").value= event.results[i][0].transcript;
         result = event.results[i][0].transcript;
   			console.log("Final Result: "+event.results[i][0].transcript)
+        if(focused == 0){
+          // then focus
+          $("#"+result).focus().select();
+          focused = 1;
+          res = result;
+        }
+        else {
+          // enter value
+          console.log("else part");
+          document.getElementById("output").value= res;
+          focused = 0;
+          $("#"+res).val(result);
+        }
   		}
       /*
   		else{
@@ -78,20 +92,6 @@
   	}*/
   }
   console.log("focus: "+focused);
-  var a =0;
-  if(focused == 0 && a ==0){
-    // then focus
-    $("#"+result).focus().select();
-    focused = 1;
-    res = result;
-  }
-  else {
-    // enter value
-    console.log("else part");
-    document.getElementById("output").value= "value side";
-    focused = 0;
-    $("#"+res).val(result);
-  }
   }
   }
   else{
