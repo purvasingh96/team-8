@@ -21,6 +21,7 @@ function show(){
     }
 }
 
+
 function father_show()
 {
 	var x = document.getElementById('image2');
@@ -45,25 +46,44 @@ function father_show()
 function gender_show()
 {
 
-	var x = document.getElementById('image4');
+	  var x = document.getElementById('image4');
     var y = document.getElementById('image5');
     var male = document.getElementById('male').checked;
-    console.log(male);
+    var female = document.getElementById('female').checked;
+    //console.log(male);
     //var female = document.getElementById('female').checked;
     if(male){
-    	alert("male");
-    	x.style.display == 'block';
-    	y.style.display == 'none';
+    	
+      document.getElementById('image4').innerHTML += '<br><img src = "img/tick.png" alt = "" width = "33" height = "33">';
+      document.getElementById('image5').innerHTML = " ";
+    	 
     }
-    else{
-    	alert("female");
-    	x.style.display == 'none';
-    	y.style.display == 'block';
+    else if(female){
+    	
+      document.getElementById('image5').innerHTML += '<img src = "img/cross.png" alt = "" width= 33 height = 33>';
+      document.getElementById('image4').innerHTML = " ";
+    	 
     }
 }
 
-
-
+function date_show()
+{
+  var x = document.getElementById('image6');
+    var y = document.getElementById('image7');
+    var read = document.getElementById('datepicker').value;
+    if(read == null){
+      y.style.display = 'block';
+      x.style.display = 'none';
+    }
+    else if(read != '07-07-1996'){
+      y.style.display = 'block';
+      x.style.display = 'none';
+    }
+    else {
+      y.style.display = 'none';
+      x.style.display = 'block';
+    }
+}
 
 </script>
 <style type="text/css">
@@ -291,19 +311,20 @@ img .image{
       <div class="form-style-5">
       <form>
       <fieldset>
-      <legend><span class="number">1</span> Full Exercises </legend>
+      <legend><span class="number">2</span> Full Exercises </legend>
 	<label>Name: </label> <input type="text" id="name" name = "field1" onkeyup="show();"><img src = "img/tick.png" alt = "" id = "image" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image1" style="display: none;" width="33" height="33">
 
 	<label>Father's Name: </label><input type="text" id="fname" name = "field2" onkeyup="father_show();"><img src = "img/tick.png" alt = "" id = "image2" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image3" style="display: none;" width="33" height="33">
 
+  <label>Gender: </label>
+  <input type="radio" id="male" name = "gender" onchange="gender_show();">Male</input>
+  <input type="radio" id="female" name = "gender" onchange="gender_show();">Female</input>
+   <span id="image4"></span>		
+    <span id="image5"></span>
+    <!-- <img src = "img/tick.png" alt = "" id = "image4" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;" width="33" height="33"> -->
+		
 
-	<label>Gender: </label> <input type="radio" id="male" name = "gender" onkeyup="gender_show();">Male</input>
-	<img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
-		<input type="radio" id="female" name = "gender" onkeyup="gender_show();">Female</input><img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
-		<img src = "img/tick.png" alt = "" id = "image6" style="display: none;"><img src = "img/cross.png" alt = "" id = "image7" style="display: none;">
-
-	<label>Date Of Birth: </label> <input type="text"  id="datepicker" />
-	<input type="submit" name="submit"></input>
-
+	<label>Date: </label><input type="text" id="datepicker" name = "field1" onkeyup="date_show();" placeholder="dd-mm-yyy"><img src = "img/tick.png" alt = "" id = "image6" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image7" style="display: none;" width="33" height="33"><br>
+  <input type="submit" name="submit"></input>
 </body>
 </html>
