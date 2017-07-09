@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+var parent = document.getElementById('page-top');
+function show(){
+    var x = document.getElementById('image');
+    var y = document.getElementById('image1');
+    var read = document.getElementById('name').value;
+    if(read == null){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else if(read != 'akash'){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else {
+    	y.style.display = 'none';
+    	x.style.display = 'block';
+    }
+}
+function father_show()
+{
+	var x = document.getElementById('image2');
+    var y = document.getElementById('image3');
+    var read = document.getElementById('fname').value;
+    if(read == null){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else if(read != 'chandra'){
+    	y.style.display = 'block';
+    	x.style.display = 'none';
+    }
+    else {
+    	y.style.display = 'none';
+    	x.style.display = 'block';
+    }
+}
+function gender_show()
+{
+	var x = document.getElementById('image4');
+    var y = document.getElementById('image5');
+    var male = document.getElementById('male').checked;
+    console.log(male);
+    //var female = document.getElementById('female').checked;
+    if(male){
+    	alert("male");
+    	x.style.display == 'block';
+    	y.style.display == 'none';
+    }
+    else{
+    	alert("female");
+    	x.style.display == 'none';
+    	y.style.display == 'block';
+    }
+}
+</script>
 <style type="text/css">
   <style type="text/css">
 .form-style-5{
@@ -137,25 +194,27 @@
   -moz-box-shadow: 0px 0px 114px -27px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 114px -27px rgba(0,0,0,0.75);
 }
+img .image{
+	width: 10px;
+	height: 10px;
+	display: none;
+}
 </style>
-
+<html>
 <head>
-
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Amogh Trust</title>
+    <title>Amog Trust</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
-	 <link href="buttontuts.css" rel="stylesheet">
-
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -169,6 +228,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+	<title>tmp file</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 </head>
 <!-- Navigation -->
 <div class="container">
@@ -181,7 +244,7 @@
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                       <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                   </button>
-                  <a class="navbar-brand" href="#page-top">AMOGH TRUST</a>
+                  <a class="navbar-brand" href="#page-top">Amogh Trust</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -203,73 +266,33 @@
               </div>
               <!-- /.navbar-collapse -->
           </div>
-          <!-- /.container-fluid -->
-      </nav>
-
+          </nav>
     </div>
   </div>
 </div>
 
-<body id="page-top" class="index">
 
+<body id = "page-top" class="index">
 <div class="container-fluid" style="margin-top: 200px; border-radius:10px;">
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10 effect1" style="padding-top:2%; padding-bottom:2%; padding-left:10%; padding-right:10%;">
-
-	<div class="form-style-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-							<form>
-			<fieldset>
-				<legend><span class="number">1</span> Text Fields</legend> <label>Name:</label> <input name="field1" placeholder="Your Name *" type="text"> <label>Father's Name:</label> <input name="field2" placeholder="Your Father's Name *" type="text">  <!-- <label for="job">Interests:</label>
-      <select id="job" name="field4">
-      <optgroup label="Indoors">
-        <option value="fishkeeping">Fishkeeping</option>
-        <option value="reading">Reading</option>
-        <option value="boxing">Boxing</option>
-        <option value="debate">Debate</option>
-        <option value="gaming">Gaming</option>
-        <option value="snooker">Snooker</option>
-        <option value="other_indoor">Other</option>
-      </optgroup>
-      <optgroup label="Outdoors">
-        <option value="football">Football</option>
-        <option value="swimming">Swimming</option>
-        <option value="fishing">Fishing</option>
-        <option value="climbing">Climbing</option>
-        <option value="cycling">Cycling</option>
-        <option value="other_outdoor">Other</option>
-      </optgroup>
-      </select>
-      </fieldset>
+      <div class="form-style-5">
+      <form>
       <fieldset>
-      <legend><span class="number">2</span> Additional Info</legend>
-      <textarea name="field3" placeholder="About Your School"></textarea>
-      </fieldset> -->
-				 <input type="submit" value="Submit">
-			</fieldset>
-		</form>
-				</div>
-				<div class="col-lg-4">
-					<img src="Hoshi.gif">
-				</div>
-			</div>
-		</div>
-	</div>
-  <div class="row">
-    <div class="col-lg-2">
-        <Button class="buttont" onclick="location.href='dashboard.html'">Back</Button>
-    </div>
-    <div class="col-lg-8"></div>
-    <div class="col-lg-2">
-      <Button class="buttont" onclick="location.href='buttondemo.html'">Next</Button>
-    </div>
+      <legend><span class="number">1</span> Full Exercises </legend>
+	<label>Name: </label> <input type="text" id="name" autocomplete="off" name = "field1" onkeyup="show();" placeholder="Enter Name"><img src = "img/tick.png" alt = "" id = "image" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image1" style="display: none;" width="33" height="33">
 
-  </div>
-    </div>
-    <div class="col-lg-1"></div>
-  </div>
-</div>
+	<label>Father's Name: </label><input type="text" id="fname" autocomplete="off" name = "field2" onkeyup="father_show();" placeholder="Enter Name"><img src = "img/tick.png" alt = "" id = "image2" style="display: none;" width="33" height="33"><img src = "img/cross.png" alt = "" id = "image3" style="display: none;" width="33" height="33">
+
+
+	<label>Gender: </label> <input type="radio" id="male" name = "gender" onkeyup="gender_show();">Male</input>
+	<img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
+		<input type="radio" id="female" name = "gender" onkeyup="gender_show();">Female</input><img src = "img/tick.png" alt = "" id = "image4" style="display: none;"><img src = "img/cross.png" alt = "" id = "image5" style="display: none;">
+		<img src = "img/tick.png" alt = "" id = "image6" style="display: none;"><img src = "img/cross.png" alt = "" id = "image7" style="display: none;">
+
+	<label>Date Of Birth: </label> <input type="date"  id="datepicker" />
+	<input type="submit" name="submit"></input>
+
 </body>
+</html>

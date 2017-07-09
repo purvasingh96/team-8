@@ -159,6 +159,74 @@
     <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+    var focused = 0;
+    var res;
+
+
+    var clickButton=document.getElementById("clickingbutton");
+    document.getElementById("output").value=" ";
+
+    if("webkitSpeechRecognition"in window){
+    var recognizer=new webkitSpeechRecognition;
+    recognizer.continous=true;
+    recognizer.interimResults=true;
+    recognizer.lang="en-US";recognizer.maxAlternatives=1;
+    // document.getElementById("output").value=" ";
+    clickButton.onclick=function(){
+    //document.getElementById("output").value=" ";
+    recognizer.start();
+    console.log("Recognition start is called")};
+
+    recognizer.onstart=function()
+    {
+      console.log("The Listening for input has started")
+    };
+
+    recognizer.onresult=function(event){
+      console.log('called function');
+      if(typeof event.results==="undefined"){
+        recognizer.stop();
+        console.log("Something went wrong when getting back the result");
+        return
+      }
+      var result;
+
+
+      for(var i=event.resultIndex;i<event.results.length;i++){
+        if(event.results[i].isFinal){
+          // console.log(event.results[i][0].transcript);
+          document.getElementById("output").value= event.results[i][0].transcript;
+          result = event.results[i][0].transcript;
+          console.log("Final Result: "+event.results[i][0].transcript)
+          if(focused == 0){
+            // then focus
+            $("#"+result).focus().select();
+            focused = 1;
+            res = result;
+          }
+          else {
+            // enter value
+            console.log("else part");
+            document.getElementById("output").value= res;
+            focused = 0;
+            $("#"+res).val(result);
+          }
+        }
+        /*
+        else{
+          document.getElementById("output").value=
+          document.getElementById("output").value+event.results[i][0].transcript;
+          console.log(""+event.results[i][0].transcript)
+      }*/
+    }
+    console.log("focus: "+focused);
+    }
+    }
+    else{
+      console.log("Speech Recognition is not supported in this browser")
+    }
+    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -189,7 +257,9 @@
                           <a href="#page-top"></a>
                       </li>
                       <li class="page-scroll">
-                          <a href="#portfolio">Portfolio</a>
+                        <button id="clickingbutton" type="button"> </button>
+                          <!-- <a href="#portfolio" id="clickingbutton" type="button">Speak</a> -->
+
                       </li>
                       <li class="page-scroll">
                           <a href="#about">About</a>
@@ -222,7 +292,11 @@
       {{ form|safe }}
       {% if generated %}
       <a href="http://localhost:8080/form-submit/form_validate?form_id={{form_id}}"><h1> Your form is here with id:{{ form_id }}</h1></a>
+      <p id="result"></p>
+      {% else %}
+      <a href="http://localhost:8080/form-show/form_validate?form_id={{form_id}}"><h1> Here is your data with id:{{ form_id }}</h1></a>
       {% endif %}
+
 	</div>
 
   </div>

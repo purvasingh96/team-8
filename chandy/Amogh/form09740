@@ -1,0 +1,3 @@
+V<form method="get" action="form_validate"><input type="hidden" name="form_id" value="09740"><input type="text" placeholder="Name" name="text0" id ="name"><select name="listbox0" ><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Optgsdfhg">Optgsdfhg</option></select><input type="radio" name="radio0" value="one" checked> one<br><input type="radio" name="radio0" value="two" checked> two<br><select name="listbox1" ><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option><option value="Option 3">Option 3</option></select><input type="submit"></form>
+p0
+.

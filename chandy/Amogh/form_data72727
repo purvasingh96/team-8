@@ -1,0 +1,19 @@
+(lp0
+(dp1
+S'listbox1'
+p2
+VOption 1
+p3
+sS'listbox0'
+p4
+VOption 1
+p5
+sS'text0'
+p6
+Vchan
+p7
+sS'radio0'
+p8
+Vtwo
+p9
+sa.

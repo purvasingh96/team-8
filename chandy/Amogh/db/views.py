@@ -71,7 +71,7 @@ class Uploader():
         else:
             return "Incorrect params"
 
-    def index(self, request):
+    def upload(self, request):
         if not self.auth(request):
             template = loader.get_template('db/loginpage.html')
             context = {}
@@ -156,7 +156,7 @@ class Uploader():
                 for i in list_of_params:
                     json_gen[i] = request.GET[i]
             except Exception as e:
-                context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id':" " }
+                context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id':request.GET['form_id'] }
                 template = loader.get_template('db/standardform.html')
                 return HttpResponse(template.render(context, request))
             try:
@@ -165,7 +165,7 @@ class Uploader():
                 list_of_params = pickle.dump(saved_json,open('form_data'+request.GET['form_id'],"wb"))
             except Exception as e:
                 list_of_params = pickle.dump([json_gen],open('form_data'+request.GET['form_id'],"wb"))
-            context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id':" " ,"submitted":True}
+            context = {'form': pickle.load(open('form'+request.GET['form_id'])),'form_id': request.GET['form_id'],"submitted":True}
             template = loader.get_template('db/standardform.html')
             return HttpResponse(template.render(context, request))
         else:
@@ -187,6 +187,16 @@ class Uploader():
             return HttpResponse(template.render(context, request))
         else:
             return HttpResponse('error')
+    def submit_url(self,request):
+        context= {}
+        template = loader.get_template('db/submit_url.html')
+        return HttpResponse(template.render(context, request))
+    def index(self,request):
+        context = {}
+        template = loader.get_template('db/index.html')
+        return HttpResponse(template.render(context, request))
+
+
 
 
 
@@ -230,6 +240,8 @@ class RestfulEndpoints():
         else:
             return HttpResponse(json.dumps({"Status":"falied", "message":"no-auth"}))
             # don't do it
+
+
     def done_tuts(self,request):
         if self.auth(request) == "Already Signed in":
             if request.method == 'POST':

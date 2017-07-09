@@ -50,4 +50,72 @@ sS'radio0'
 p26
 Vtwo
 p27
+sa(dp28
+S'listbox1'
+p29
+VOption 2
+p30
+sS'listbox0'
+p31
+VOption 1
+p32
+sS'text0'
+p33
+Vsfdg
+p34
+sS'radio0'
+p35
+Vtwo
+p36
+sa(dp37
+S'listbox1'
+p38
+VOption 1
+p39
+sS'listbox0'
+p40
+VOption 1
+p41
+sS'text0'
+p42
+Vchn
+p43
+sS'radio0'
+p44
+Vtwo
+p45
+sa(dp46
+S'listbox1'
+p47
+VOption 1
+p48
+sS'listbox0'
+p49
+VOption 1
+p50
+sS'text0'
+p51
+Vchn
+p52
+sS'radio0'
+p53
+Vtwo
+p54
+sa(dp55
+S'listbox1'
+p56
+VOption 1
+p57
+sS'listbox0'
+p58
+VOption 1
+p59
+sS'text0'
+p60
+Vchand
+p61
+sS'radio0'
+p62
+Vtwo
+p63
 sa.
