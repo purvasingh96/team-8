@@ -4,9 +4,238 @@ r = requests.get('https://docs.google.com/forms/d/e/1FAIpQLSdwDrwgqZ1N6uFiMf1kxg
 
 soup = BeautifulSoup(r.text, 'html.parser')
 form = soup.find_all('form')
+form_generated = ""
 for i in form:
-    print i.find_all('input')
-    print i.find_all('select')
+    form_contents = []
+    for i in inputs:
+        form_element = {}
+        if i['type'] == 'text':
+            form_element['name'] = i['aria-label']
+            form_generated += '<input type="text" placeholder="'+form_element['name']+'" name="'+form_element['name']+'">'
+    for pic in soup.find_all('div'):
+
+        if pic.get('role', 'n/a') == 'listbox':
+            print "listbox"
+            list_box_items = []
+            for pic1 in pic.find_all('div'):
+                if pic1.get('aria-label', 'n/a') != 'n/a':
+                    print pic1.get('aria-label', 'n/a')
+                    list_box_items.append(pic1.get('aria-label', 'n/a'))
+            form_generated +="<select>"
+            for lst_item in list_box_items:
+                form_generated +='<option value="'+ lst_item +'">'+ lst_item +'</option>'
+            form_generated +="</select>"
+
+        if pic.get('role', 'n/a') == 'radiogroup':
+            print "listbox"
+            list_box_items = []
+            for pic1 in pic.find_all('div'):
+                if pic1.get('aria-label', 'n/a') != 'n/a':
+                    print pic1.get('aria-label', 'n/a')
+                    list_box_items.append(pic1.get('aria-label', 'n/a'))
+
+            for lst_item in list_box_items:
+                form_generated +='<input type="radio" name="gender" value="'+lst_item+'" checked> '+ lst_item + '<br>'
+
+print form_generated
+
+
+for i in form:
+    print form
+#     form_contents = []
+#     for pic in soup.find_all('div'):
+#         print(pic.get('role', 'n/a'))
+# n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+heading
+n/a
+n/a
+list
+listitem
+n/a
+n/a
+heading
+n/a
+listbox
+presentation
+presentation
+option
+n/a
+presentation
+option
+n/a
+option
+n/a
+option
+n/a
+option
+n/a
+presentation
+presentation
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+n/a
+radiogroup
+n/a
+n/a
+radio
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+group
+n/a
+n/a
+n/a
+checkbox
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+n/a
+radiogroup
+n/a
+n/a
+radio
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+n/a
+radiogroup
+n/a
+n/a
+radio
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+listitem
+n/a
+n/a
+heading
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+alert
+n/a
+n/a
+n/a
+button
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+n/a
+button
+n/a
+n/a
+n/a
+n/a
+
 
 for i in form:
     print i

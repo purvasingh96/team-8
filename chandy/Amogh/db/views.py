@@ -13,6 +13,8 @@ from models import CreateUser, Points
 
 import json
 
+import pickle
+
 difficulty = [[]]
 difficulty[0] = ['.DS_Store',
                  '404.php',
@@ -174,3 +176,39 @@ class RestfulEndpoints():
         else:
             return HttpResponse(json.dumps({"Status":"falied", "message":"no-auth"}))
             # don't do it
+    def done_tuts(self,request):
+        if self.auth(request) == "Already Signed in":
+            if request.method == 'POST':
+                got_json = request.POST['json']
+                pickle.dump(got_json,open('user_'+request.session['uid'],"wb"))
+                return HttpResponse(json.dumps({"status":"success"}))
+            else:
+                false_json = {
+                "Standard_Form":False,
+                "Button_Demo":False,
+                "Radio_Button_Demo":False,
+                "DatePicker_Demo":False,
+                "CheckBoxes_Demo":False,
+                "Scroll_Bar_Demo":False,
+                "One_At_A_Time": False,
+                "Jumbler_Excercise": False,
+                "Full_Excercise": False,
+                "Excel_Data_Entry": False,
+                "Selection_of_cells": False,
+                "Simple_Data_Entry_I": False,
+                "Simple_Data_Entry_II": False,
+                "Cell_Size_Excercise": False,
+                "Basic_Number_Data_Entry_Tricks": False,
+                "Extra": False,
+                "Current_Directory_file_upload": False,
+                "Current_Directory_file_upload_with_specific_extension": False
+                }
+                try:
+                    got_jsno = pickle.load(open('user_'+request.session['uid'],"rb"))
+                    return HttpResponse(json.dumps(got_jsno))
+                except Exception as e:
+                    pickle.dump(false_json,open('user_'+request.session['uid'],"wb"))
+                    return HttpResponse(json.dumps(false_json))
+
+        else:
+            return HttpResponse(json.dumps({"Status":"falied", "message":"no-auth"}))

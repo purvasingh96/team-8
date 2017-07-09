@@ -1,0 +1,114 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<form id="form1">
+  <input type="text" id="name" placeholder="Answer this Questing" name="Answer this Questing" placeholder="name">
+  <select id="input2"><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option><option value="Option 3">Option 3</option><option value="Option 4">Option 4</option></select>
+  <input type="radio" name="gender" value="Option 1" checked> Option 1<br>
+  <!-- <input type="text" placeholder="Answer this Questing" name="Answer this Questing" id="input1">
+  <select>
+    <option value="Choose">Choose</option>
+    <option value="Option 1">Option 1</option>
+    <option value="Option 2">Option 2</option>
+    <option value="Option 3">Option 3</option>
+    <option value="Option 4">Option 4</option>
+  </select>
+  <select>
+    <option value="Option 1">Option 1</option>
+  </select>
+  <input type="text" placeholder="Answer this Questing" name="Answer this Questing"><select><option value="Choose">Choose</option><option value="Option 1">Option 1</option><option value="Option 2">Option 2</option><option value="Option 3">Option 3</option><option value="Option 4">Option 4</option></select><input type="radio" name="gender" value="Option 1" checked> Option 1<br> -->
+</form>
+    <div align="center">
+        <p>Click on The Button and Start Speaking (Allow Permission to access Microphone)</p>
+        <textarea rows="30" cols="100" id="output"></textarea>
+        <div align="center">
+            <button id="clickingbutton" type="button">Click Me!</button>
+        </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+  var focused = 0;
+  var res;
+
+
+  var clickButton=document.getElementById("clickingbutton");
+  document.getElementById("output").value=" ";
+
+  if("webkitSpeechRecognition"in window){
+  var recognizer=new webkitSpeechRecognition;
+  recognizer.continous=true;
+  recognizer.interimResults=true;
+  recognizer.lang="en-US";recognizer.maxAlternatives=1;
+  document.getElementById("output").value=" ";
+  clickButton.onclick=function(){
+  //document.getElementById("output").value=" ";
+  recognizer.start();
+  console.log("Recognition start is called")};
+
+  recognizer.onstart=function()
+  {
+  	console.log("The Listening for input has started")
+  };
+
+  recognizer.onresult=function(event){
+    console.log('called function');
+  	if(typeof event.results==="undefined"){
+  		recognizer.stop();
+      console.log("Something went wrong when getting back the result");
+  		return
+  	}
+    var result;
+
+
+  	for(var i=event.resultIndex;i<event.results.length;i++){
+  		if(event.results[i].isFinal){
+        // console.log(event.results[i][0].transcript);
+  			document.getElementById("output").value= event.results[i][0].transcript;
+        result = event.results[i][0].transcript;
+  			console.log("Final Result: "+event.results[i][0].transcript)
+  		}
+      /*
+  		else{
+  			document.getElementById("output").value=
+  			document.getElementById("output").value+event.results[i][0].transcript;
+  			console.log(""+event.results[i][0].transcript)
+  	}*/
+  }
+  console.log("focus: "+focused);
+  var a =0;
+  if(focused == 0 && a ==0){
+    // then focus
+    $("#"+result).focus().select();
+    focused = 1;
+    res = result;
+  }
+  else {
+    // enter value
+    console.log("else part");
+    document.getElementById("output").value= "value side";
+    focused = 0;
+    $("#"+res).val(result);
+  }
+  }
+  }
+  else{
+  	console.log("Speech Recognition is not supported in this browser")
+  }
+  </script>
+</html>
+
+
+<!-- <input type="text" placeholder="Answer this Questing name="Answer this Questing">
+<select>
+  <option value="Choose">Choose</option>
+  <option value="Option 1">Option 1</option>
+  <option value="Option 2">Option 2</option><option value="Option 3">Option 3</option>
+  <option value="Option 4">Option 4</option>
+</select>
+
+<select>
+  <option value="Option 1">Option 1</option>
+</select> -->
